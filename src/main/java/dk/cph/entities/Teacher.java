@@ -3,13 +3,17 @@ package dk.cph.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
 @Table(name = "teachers")
+@Builder
 @NoArgsConstructor
 @Getter
 @ToString
+@AllArgsConstructor
 @NamedQuery(name = "Teacher.deleteAll", query = "DELETE FROM Teacher")
 public class Teacher {
 
@@ -25,5 +29,8 @@ public class Teacher {
 
     @Column(name = "zoom", unique = true)
     private String zoom;
+
+    @OneToMany(mappedBy = "teacher")
+    private Set<Course> courses = new HashSet<>();
 
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -11,6 +13,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @ToString
+@Builder
+@AllArgsConstructor
+
 public class Course {
 
     @Id
@@ -25,6 +30,19 @@ public class Course {
 
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
+
+    @Enumerated(EnumType.STRING)
+    private Enum courseName;
+
+    @ManyToMany(mappedBy = "courses")
+    private Set<Student> students = new HashSet<>();
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Teacher teacher;
+
+    public enum courseName{
+    SPORTS, MATH,  ENGLISH, SCIENCE, ART, MUSIC, HISTORY
+    }
 
 }
 
