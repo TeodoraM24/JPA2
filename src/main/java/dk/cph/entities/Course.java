@@ -1,4 +1,4 @@
-package dk.cph.model;
+package dk.cph.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
