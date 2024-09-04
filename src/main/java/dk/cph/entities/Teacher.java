@@ -12,6 +12,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NamedQuery(name = "Teacher.deleteAll", query = "DELETE FROM Teacher")
@@ -32,5 +33,7 @@ public class Teacher {
 
     @OneToMany(mappedBy = "teacher")
     private Set<Course> courses = new HashSet<>();
+
+
 
 }

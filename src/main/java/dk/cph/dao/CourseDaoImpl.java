@@ -2,13 +2,10 @@ package dk.cph.dao;
 
 import dk.cph.entities.Course;
 import dk.cph.entities.Student;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.Set;
 
 
@@ -33,8 +30,9 @@ public class CourseDaoImpl implements GenericDAO <Course, Integer>{
     }
 
     @Override
-    public void persistEntity(Course entity) {
+    public Student persistEntity(Course entity) {
 
+        return null;
     }
 
     @Override
