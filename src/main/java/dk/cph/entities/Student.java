@@ -1,16 +1,20 @@
-package dk.cph.model;
+package dk.cph.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Builder
 @Table(name = "students")
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 @NamedQueries({
         @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s"),
         @NamedQuery(name = "Student.findByEmail", query = "SELECT s FROM Student s WHERE s.email = :email"),
@@ -24,6 +28,7 @@ public class Student {
     private Integer id;
 
     @Column(name = "name", nullable = false)
+
     private String name;
 
     @Column(name = "email", nullable = false, unique = true)
@@ -36,5 +41,10 @@ public class Student {
     @Setter(AccessLevel.NONE)
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+   @ManyToMany()
+   private Set<Course> courses = new HashSet<>();
+
+
 
 }
