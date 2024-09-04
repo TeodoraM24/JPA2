@@ -28,6 +28,7 @@ public class Student {
     private Integer id;
 
     @Column(name = "name", nullable = false)
+
     private String name;
 
     @Column(name = "email", nullable = false, unique = true)

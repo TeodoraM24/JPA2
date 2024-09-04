@@ -1,15 +1,16 @@
 package dk.cph.dao;
 
+import dk.cph.config.HibernateConfig;
 import dk.cph.entities.Course;
-import dk.cph.entities.Student;
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.TypedQuery;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -48,7 +49,15 @@ public class CourseDaoImpl implements GenericDAO <Course, Integer>{
     }
 
     @Override
-    public Course updateEntity(Course entity, Integer id) {
-        return null;
+    public Course updateEntity(Course course, Integer id) {
+        /*
+        try(EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            em.find(Course.class, course.getId());
+            em.merge(course);
+            em.getTransaction().commit();
+        }*/
+        return course;
     }
 }

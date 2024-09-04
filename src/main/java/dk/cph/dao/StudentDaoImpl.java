@@ -37,7 +37,12 @@ public class StudentDaoImpl implements GenericDAO <Student, Integer> {
 
     @Override
     public void persistEntity(Student entity) {
-
+        try (EntityManager em = emf.createEntityManager())
+        {
+            em.getTransaction().begin();
+            em.persist(entity);
+            em.getTransaction().commit();
+        }
     }
 
     @Override

@@ -12,6 +12,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NamedQuery(name = "Teacher.deleteAll", query = "DELETE FROM Teacher")

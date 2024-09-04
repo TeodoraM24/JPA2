@@ -7,15 +7,14 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @Table(name = "courses")
 @NoArgsConstructor
 @Getter
+@Setter
 @ToString
 @Builder
 @AllArgsConstructor
-
 public class Course {
 
     @Id
@@ -32,7 +31,7 @@ public class Course {
     private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)
-    private Enum courseName;
+    private CourseName courseName;
 
     @ManyToMany(mappedBy = "courses")
     private Set<Student> students = new HashSet<>();
@@ -40,10 +39,7 @@ public class Course {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Teacher teacher;
 
-    public enum courseName{
-    SPORTS, MATH,  ENGLISH, SCIENCE, ART, MUSIC, HISTORY
+    public enum CourseName {
+        SPORTS, MATH, ENGLISH, SCIENCE, ART, MUSIC, HISTORY
     }
-
 }
-
-
